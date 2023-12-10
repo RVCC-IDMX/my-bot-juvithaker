@@ -41,6 +41,7 @@
     "deep-is": "^0.1.4",
     "define-data-property": "^1.1.1",
     "define-properties": "^1.2.1",
+    "discord.js": "^14.14.1",
     "doctrine": "^3.0.0",
     "enquirer": "^2.4.1",
     "es-abstract": "^1.22.3",
