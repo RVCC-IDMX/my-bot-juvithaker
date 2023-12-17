@@ -1,8 +1,11 @@
+/* eslint-disable no-undef */
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable semi */
 /* eslint-disable no-tabs */
 // Require the necessary discord.js classes
+const fs = require('node:fs');
+const path = require('node:path');
 const { Client, Events, GatewayIntentBits } = require('discord.js');
 // eslint-disable-next-line semi
 const { token } = require('./config.json');
@@ -19,3 +22,28 @@ client.once(Events.ClientReady, readyClient => {
 
 // Log in to Discord with your client's token
 client.login(token);
+
+client.commands = new Collection();
+
+const foldersPath = path.join(__dirname, 'commands');
+const commandFolders = fs.readdirSync(foldersPath);
+
+for (const folder of commandFolders) {
+	const commandsPath = path.join(foldersPath, folder);
+	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+	for (const file of commandFiles) {
+		const filePath = path.join(commandsPath, file);
+		const command = require(filePath);
+		// Set a new item in the Collection with the key as the command name and the value as the exported module
+		if ('data' in command && 'execute' in command) {
+			client.commands.set(command.data.name, command);
+		} else {
+			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+		}
+	}
+}
+
+client.on(Events.InteractionCreate, interaction => {
+	if (!interaction.isChatInputCommand()) return;
+	console.log(interaction);
+});
