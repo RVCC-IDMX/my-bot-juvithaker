@@ -8,6 +8,7 @@
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*
 
+config.json
 
 https://discord.com/api/oauth2/authorize
 # KDE directory preferences
