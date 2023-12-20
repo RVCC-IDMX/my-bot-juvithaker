@@ -1,7 +1,7 @@
 const fs = require('node:fs')
 const path = require('node:path')
 const {
-  Client, Collection, Events, GatewayIntentBits
+  Client, Collection, Events, GatewayIntentBits, EmbedBuilder
 } = require('discord.js')
 const { token } = require('./config.json')
 
@@ -30,6 +30,24 @@ client.once(Events.ClientReady, (readyClient) => {
 })
 
 client.on(Events.InteractionCreate, async (interaction) => {
+  if (interaction.isButton()) {
+    const { customId } = interaction
+    if (customId === 'view more') {
+      const viewmoreEmbed = new EmbedBuilder()
+        .setColor(0x0099FF)
+        .setTitle('RVCC IDMX Discord Bot Repo')
+        .setURL('https://github.com/RVCC-IDMX/my-bot-juvithaker')
+        .setAuthor({ name: 'Juvina Thaker', iconURL: 'https://imgur.com/gallery/pwbUJwD', url: 'https://github.com/juvithaker' })
+        .setThumbnail('https://imgur.com/a/31ij6Ss')
+        .setImage('https://imgur.com/a/31ij6Ss')
+        .setTimestamp()
+        .setFooter({ text: 'Final Project' })
+      await interaction.deferUpdate()
+      await interaction.channel.send({ embeds: [viewmoreEmbed] })
+      return
+    }
+  }
+
   if (!interaction.isChatInputCommand()) return
   const command = interaction.client.commands.get(interaction.commandName)
 
