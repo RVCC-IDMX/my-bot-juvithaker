@@ -37,9 +37,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
         .setColor(0x0099FF)
         .setTitle('RVCC IDMX Discord Bot Repo')
         .setURL('https://github.com/RVCC-IDMX/my-bot-juvithaker')
-        .setAuthor({ name: 'Juvina Thaker', iconURL: 'https://imgur.com/gallery/pwbUJwD', url: 'https://github.com/juvithaker' })
-        .setThumbnail('https://imgur.com/a/31ij6Ss')
-        .setImage('https://imgur.com/a/31ij6Ss')
+        .setAuthor({ name: 'Juvina Thaker', iconURL: 'https://images.unsplash.com/photo-1702182171361-7721d2502a35?q=80&w=40&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', url: 'https://github.com/juvithaker' })
+        .setThumbnail('https://images.unsplash.com/photo-1702182171361-7721d2502a35?q=80&w=40&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+        .setImage('https://images.unsplash.com/photo-1702182171361-7721d2502a35?q=80&w=40&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
         .setTimestamp()
         .setFooter({ text: 'Final Project' })
       await interaction.deferUpdate()
@@ -47,7 +47,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
       return
     }
   }
-
+  // https://images.unsplash.com/photo-1702182171361-7721d2502a35?q=80&w=40&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
   if (!interaction.isChatInputCommand()) return
   const command = interaction.client.commands.get(interaction.commandName)
 
